@@ -1,5 +1,7 @@
 class Factory
   def self.new(*args, &block)
+    raise ArgumentError, 'wrong number of arguments (0 for 1+)' if args.length < 1
+
     new_object = Class.new do
       define_method :initialize do |*values|
         values.each_with_index do |value, index|
