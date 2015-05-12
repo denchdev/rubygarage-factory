@@ -1,5 +1,5 @@
 class Factory
-  def self.new(*args)
+  def self.new(*args, &block)
     new_object = Class.new do
       define_method :initialize do |*values|
         values.each_with_index do |value, index|
@@ -24,6 +24,8 @@ class Factory
         obj1 == obj2
       end
     end
+
+    new_object.class_eval &block if block_given?
 
     Object.const_set(args.shift, new_object) if args.first.is_a? String
 

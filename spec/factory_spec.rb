@@ -17,6 +17,15 @@ describe Factory do
 
       expect(Customer.new).to be_a(Customer)
     end
+
+    it 'with block' do
+      Customer = Factory.new(:name, :address, :zip) do
+        def greeting
+        end
+      end
+
+      expect(Customer.new).to respond_to(:greeting)
+    end
   end
 
   context 'Customer' do
@@ -26,7 +35,12 @@ describe Factory do
     let(:output) { '<struct Customer name="%s" address="%s" zip="%s">' % [name, address, zip] }
 
     subject do
-      Factory.new('Customer', :name, :address, :zip)
+      Factory.new('Customer', :name, :address, :zip) do
+        def greeting
+          "Hello!"
+        end
+      end
+
       Customer.new(name, address, zip)
     end
 
@@ -36,6 +50,7 @@ describe Factory do
     it { expect(subject["name"]).to eq(name) }
     it { expect(subject[:name]).to eq(name) }
     it { expect(subject[0]).to eq(name) }
+    it { expect(subject.greeting).to eq('Hello!') }
     it { expect(subject).to eq(Customer.new(name, address, zip)) }
     it { expect(subject).to_not eq(Customer.new('test', 'test', 'test')) }
   end
