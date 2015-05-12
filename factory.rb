@@ -2,6 +2,10 @@ class Factory
   def self.new(*args, &block)
     raise ArgumentError, 'wrong number of arguments (0 for 1+)' if args.length < 1
 
+    unless args.first.is_a?(String) || args.first.is_a?(Symbol)
+      raise TypeError, "no implicit conversion of #{args.first.class} into String"
+    end
+
     new_object = Class.new do
       define_method :initialize do |*values|
         values.each_with_index do |value, index|

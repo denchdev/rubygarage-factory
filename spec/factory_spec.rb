@@ -5,6 +5,10 @@ describe Factory do
   before { Object.send(:remove_const, 'Customer') if Object.const_defined?('Customer') }
 
   context 'Define' do
+    it 'with wrong arguments' do
+      expect { Factory.new([1, 2, 3]) }.to raise_error(TypeError)
+    end
+
     it 'without arguments' do
       expect { Factory.new }.to raise_error(ArgumentError)
     end
@@ -12,7 +16,6 @@ describe Factory do
     it 'with class_name' do
       Factory.new('Customer', :name, :address, :zip)
 
-      expect(Object.const_defined?('Customer')).to be(true)
       expect(Customer.new).to be_a(Customer)
     end
 
