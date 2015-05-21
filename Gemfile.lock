@@ -5,6 +5,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     i18n (0.7.0)
+    rake (10.4.2)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -24,4 +25,5 @@ PLATFORMS
 
 DEPENDENCIES
   faker
+  rake
   rspec
