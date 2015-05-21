@@ -1,4 +1,6 @@
-class Factory
+require 'factory/version'
+
+module Factory
   def self.new(*args, &block)
     raise ArgumentError, 'wrong number of arguments (0 for 1+)' if args.length < 1
 

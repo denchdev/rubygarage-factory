@@ -1,5 +1,5 @@
+require 'spec_helper'
 require 'faker'
-require_relative '../factory'
 
 describe Factory do
   before { Object.send(:remove_const, 'Customer') if Object.const_defined?('Customer') }

@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'rake'
-gem 'rspec'
-gem 'faker'
+# Specify your gem's dependencies in factory.gemspec
+gemspec
