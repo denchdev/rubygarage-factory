@@ -1,4 +1,6 @@
-# Usage
+# Factory [![Build Status](https://travis-ci.org/timlar/rubygarage-factory.svg?branch=master)](https://travis-ci.org/timlar/rubygarage-factory)
+
+## Usage
 
 Create a factory with a name under Factory
 
